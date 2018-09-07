@@ -1,3 +1,5 @@
 [user]
 	email = sobotka.vaclav@gmail.com
 	name = Sobotka Vaclav
+[core]
+	editor = vi
