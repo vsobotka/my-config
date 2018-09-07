@@ -1,0 +1,8 @@
+---
+- name: Install Software
+  hosts: local
+  connection: local
+  remote_user: vsobotka
+
+  roles:
+    - common

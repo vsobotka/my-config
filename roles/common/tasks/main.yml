@@ -1,0 +1,11 @@
+---
+- name: Install Git
+  pacman: name=git state=present
+  become: true
+
+- name: Create Git config symlink
+  file:
+    src: '{{ playbook_dir }}/roles/common/files/.gitconfig'
+    dest: ~/.gitconfig
+    state: link
+
