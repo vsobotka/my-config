@@ -1,11 +1,30 @@
 ---
 - name: Install Git
+  become: yes
   pacman: name=git state=present
-  become: true
 
 - name: Create Git config symlink
   file:
     src: '{{ playbook_dir }}/roles/common/files/.gitconfig'
     dest: ~/.gitconfig
     state: link
+
+- name: Install NeoVim
+  become: yes
+  pacman: name=neovim state=present
+
+- name: Check NeoVim config dir state
+  stat: path=~/.config/nvim
+  register: nvim
+
+- name: Remove NeoVim config if it is a dir
+  file: path=~/.config/nvim state=absent
+  when: nvim.stat.isdir is defined and nvim.stat.isdir
+
+- name: Create NeoVim config symlink
+  file:
+    src: '{{ playbook_dir }}/roles/common/files/nvim'
+    dest: ~/.config/nvim
+    state: link
+    force: yes
 
