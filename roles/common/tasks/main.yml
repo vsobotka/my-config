@@ -1,4 +1,5 @@
 ---
+######## Git
 - name: Install Git
   become: yes
   pacman: name=git state=present
@@ -9,6 +10,7 @@
     dest: ~/.gitconfig
     state: link
 
+######## NeoVim
 - name: Install NeoVim
   become: yes
   pacman: name=neovim state=present
@@ -28,6 +30,7 @@
     state: link
     force: yes
 
+######## Bash aliases
 - name: Create symlink to .bash_aliases
   file:
     src: '{{ playbook_dir }}/roles/common/files/.bash_aliases'
