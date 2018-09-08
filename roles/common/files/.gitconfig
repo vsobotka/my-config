@@ -2,4 +2,4 @@
 	email = sobotka.vaclav@gmail.com
 	name = Sobotka Vaclav
 [core]
-	editor = vi
+	editor = nvim
