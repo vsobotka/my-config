@@ -92,3 +92,12 @@
     state: link
     force: yes
 
+######## Vim-plug
+- name: Ensure directory structure for vim-plug exists
+  file: path=~/.local/share/nvim/site/autoload state=directory
+
+- name: Ensure vim-plug is downloaded
+  get_url: 
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: ~/.local/share/nvim/site/autoload/plug.vim
+
