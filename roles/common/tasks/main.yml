@@ -72,3 +72,23 @@
     groups: docker
     append: yes
 
+######## Spacemacs
+- name: Ensure emacs is installed
+  become: yes
+  pacman: name=emacs state=latest
+
+- name: Ensure spacemacs repo is cloned
+  git:
+    repo: "https://github.com/syl20bnr/spacemacs"
+    dest: "~/.emacs.d"
+    clone: yes
+    force: no
+    accept_hostkey: yes
+
+- name: Create spacemacs config symlink
+  file:
+    src: '{{ playbook_dir }}/roles/common/files/.spacemacs'
+    dest: ~/.spacemacs
+    state: link
+    force: yes
+
