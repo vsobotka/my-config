@@ -28,3 +28,16 @@
     state: link
     force: yes
 
+- name: Create symlink to .bash_aliases
+  file:
+    src: '{{ playbook_dir }}/roles/common/files/.bash_aliases'
+    dest: ~/.bash_aliases
+    state: link
+    force: yes
+
+- name: Source .bash_aliases from .bashrc
+  lineinfile:
+    path: ~/.bashrc
+    line: source ~/.bash_aliases
+    state: present
+
