@@ -110,3 +110,22 @@
 - name: Ensure Spotify is installed
   command: yaourt -S spotify --noconfirm --needed
 
+######## Use Pulseaudio for audio control
+- name: Ensure Pulseaudio with dependencies is installed
+  become: yes
+  pacman:
+    name: pulseaudio,pulseaudio-alsa,manjaro-pulse,pavucontrol,pa-applet
+    state: present
+
+- name: Ensure Pulseaudio runs at startup
+  lineinfile:
+    path: ~/.i3/config
+    line: exec --no-startup-id start-pulseaudio-x11
+    state: present
+  
+- name: Ensure volume control for Pulseaudio runs at startup
+  lineinfile:
+    path: ~/.i3/config
+    line: exec --no-startup-id pa-applet
+    state: present
+
