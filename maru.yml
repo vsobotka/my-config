@@ -1,0 +1,7 @@
+---
+- name: Install Software
+  hosts: maru-pc
+  remote_user: vsobotka
+
+  roles:
+    - maru
