@@ -1,3 +1,4 @@
 #!/bin/bash
-sudo pacman -S ansible
+sudo pacman -Sy ansible
+ansible-galaxy install gvillalta99.redshift
 

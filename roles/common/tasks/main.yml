@@ -114,3 +114,29 @@
 - name: Ensure Visual Studio Code is installed
   command: yaourt -S visual-studio-code-bin --noconfirm --needed
 
+######## Redshift
+- name: Ensure redshift is installed
+  become: yes
+  pacman: name=redshift state=latest
+
+- name: Create redshift config symlink
+  file:
+    src: '{{ playbook_dir }}/roles/common/files/redshift.conf'
+    dest: ~/.config/redshift.conf
+    state: link
+
+- name: Copy redshift service file
+  become: yes
+  copy:
+    src: '{{ playbook_dir }}/roles/common/files/redshift.service'
+    dest: /etc/systemd/system/
+    owner: root
+    group: root
+
+- name: Ensure redshift daemon is started and enabled
+  service:
+    name: redshift
+    enabled: yes
+    state: started
+    scope: user
+
