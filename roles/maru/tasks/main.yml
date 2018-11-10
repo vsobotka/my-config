@@ -1,10 +1,12 @@
 ---
 ######## Create a user
-- name: Create a user
-  become: yes
-  user:
-    name: maruska
-    password: ''
-    state: present
-    shell: /bin/bash
+#- name: Create a user
+#  become: yes
+#  user:
+#    name: maruska
+#    state: present
+#    shell: /bin/bash
+######## Spotify
+- name: Ensure Spotify is installed
+  command: yaourt -S spotify --noconfirm --needed
 
