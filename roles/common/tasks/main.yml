@@ -110,3 +110,7 @@
 - name: Ensure Spotify is installed
   command: yaourt -S spotify --noconfirm --needed
 
+######## Visual Studio Code
+- name: Ensure Visual Studio Code is installed
+  command: yaourt -S visual-studio-code-bin --noconfirm --needed
+
