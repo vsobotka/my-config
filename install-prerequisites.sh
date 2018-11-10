@@ -1,4 +1,6 @@
 #!/bin/bash
-sudo pacman -Sy ansible
-ansible-galaxy install gvillalta99.redshift
+sudo pacman -S ansible --needed
+ansible-galaxy install \
+    gvillalta99.redshift \
+    fubarhouse.rust
 

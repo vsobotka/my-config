@@ -7,4 +7,7 @@
   roles:
     - common
     - spotify
+    - role: fubarhouse.rust
+      shell_profiles:
+        - .bashrc
 
