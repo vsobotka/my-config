@@ -140,3 +140,12 @@
     state: started
     scope: user
 
+######## Steam
+- name: Ensure Steam is installed, will be used as a fallback
+  become: yes
+  pacman: name=steam-native state=latest
+
+- name: Ensure Steam is installed
+  become: yes
+  pacman: name=steam-manjaro state=latest
+
